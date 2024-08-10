@@ -9,7 +9,7 @@ export const inicializePrint = () => {
 	try {
 		const device = new USB()
 	} catch (e) {
-		console.error("Falha na comunicação com a impressora!")
+		console.error("\x1b[31m Falha na comunicação com a impressora! \x1b[0m")
 		return
 	}
 	
