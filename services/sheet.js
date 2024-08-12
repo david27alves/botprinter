@@ -27,6 +27,8 @@ export const getOrders = async () => {
 
     let orders = []
 
+    
+
     for(let i=0;i<rows.length;i++){
 
         orders.push({
@@ -36,10 +38,12 @@ export const getOrders = async () => {
             "itens": rows[i].get('Lista de Pedido'),
             "value": rows[i].get('Valor')
          })
+        
+         await rows[i].delete()
 
-     }
+    }
 
-     return orders
+    return orders
 
 }
 
