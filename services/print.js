@@ -4,38 +4,41 @@ import { join } from "path"
 
 //let device, printer
 
-export const inicializePrint = () => {
+// export const inicializePrint = () => {
 	
-	try {
-		const device = new USB()
-	} catch (e) {
-		console.error("\x1b[31m Falha na comunicação com a impressora! \x1b[0m")
-		return
-	}
+// 	//console.log("Entrou aqui")
+// 	device.open(async function(err){
+
+// 		if(err){
+// 		  // handle error
+// 		  console.log(`Error: ${err}`)
+// 		  return
+// 	  }
+
+// 	  const options = { encoding: "GB18030" /* default */ }
+// 	  let printer = new Printer(device, options)
+  
+// 	  return printer
 	
-	//console.log("Entrou aqui")
-	device.open(async function(err){
+// 	})
+
+// }
+
+export const print = (order) => {
+
+	const device = new USB()
+	
+	device.open(async function(err) {
 
 		if(err){
 		  // handle error
 		  console.log(`Error: ${err}`)
 		  return
 	  }
-	})
 
 	const options = { encoding: "GB18030" /* default */ }
 	let printer = new Printer(device, options)
-
-	return printer
-
-}
-
-export const print = (order) => {
 	
-	
-	const printer = inicializePrint()
-
-	// encoding is optional
 	  
 	for(let i=0;i<order.length;i++) {
 
@@ -43,7 +46,7 @@ export const print = (order) => {
 			.font("a")
 			.align("ct")
 			.style("bu")
-			.size(2, 2)
+			.size(1, 1)
 			.text('PIZZARIA DO MARCELO')
 		
 			printer
@@ -91,7 +94,7 @@ export const print = (order) => {
 			.size(1, 1)
 			.align("lt")
 			.style("normal")
-			.text(`TOTAL                               R$${order[i].value}`)
+			.text(`TOTAL                               R$ ${order[i].value}`)
 
 		printer
 			.text(" ")
@@ -105,5 +108,5 @@ export const print = (order) => {
 	printer
 	    .close()
 	
-	
+	})
 }
