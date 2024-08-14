@@ -10,7 +10,7 @@ console.log('BOTPrinter run!')
 
 setInterval(async () => {
     orders = await getOrders()
-    //console.log(orders)
+    console.log(orders)
     print(orders)
 }, time) 
 
