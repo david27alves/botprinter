@@ -19,15 +19,11 @@ const serviceAccountAuth = new JWT({
 export const getOrders = async () => {
 
     const doc = new GoogleSpreadsheet(config.sheet_id, serviceAccountAuth)
-
     await doc.loadInfo()
-
     const sheet = doc.sheetsByIndex[0]
     const rows = await sheet.getRows()
 
     let orders = []
-
-    
 
     for(let i=0;i<rows.length;i++){
 

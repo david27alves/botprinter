@@ -1,2 +1,2 @@
 cd C:\Dev\botprinter
-npm start
+pm2 start index.js
