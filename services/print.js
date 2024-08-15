@@ -6,6 +6,7 @@ import Serial from "@node-escpos/serialport-adapter"
 export const print = (order) => {
 
 	let device 
+	const port = process.env.PRINTER_PORT
 
 	switch(Number(process.env.PRINTER_TYPE)){
 		case 1:
@@ -16,7 +17,7 @@ export const print = (order) => {
 				baudRate: 115200,
 				stopBit: 1,
 			}
-			device = new Serial("COM3", options)
+			device = new Serial(port, options)
 			break
 		default:
 			console.log("Impressora inválida!")
