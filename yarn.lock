@@ -24,6 +24,14 @@
     ndarray "^1.0.19"
     qr-image "*"
 
+"@node-escpos/network-adapter@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/@node-escpos/network-adapter/-/network-adapter-0.0.1.tgz"
+  integrity sha512-v31WjOs9UVbdDWcfxr3/vnaPjoZC5GbrjZyxrKsadHinXGdjkl9TcY7/EGUMMVmV7AMnKs54jEjaAvts2SYnRA==
+  dependencies:
+    "@node-escpos/adapter" "0.0.1"
+    eventemitter3 "^4.0.7"
+
 "@node-escpos/serialport-adapter@^1.0.0":
   version "1.0.0"
   resolved "https://registry.npmjs.org/@node-escpos/serialport-adapter/-/serialport-adapter-1.0.0.tgz"

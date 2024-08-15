@@ -1,7 +1,7 @@
 import { Printer, Image } from "@node-escpos/core"
 import USB from "@node-escpos/usb-adapter"
 import Serial from "@node-escpos/serialport-adapter"
-
+import Network from "@node-escpos/network-adapter"
 
 export const print = (order) => {
 
@@ -18,6 +18,9 @@ export const print = (order) => {
 				stopBit: 1,
 			}
 			device = new Serial(port, options)
+			break
+		case 3:
+			device = new Network(process.env.PRINTER_IP, 9100)
 			break
 		default:
 			console.log("Impressora inválida!")
