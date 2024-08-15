@@ -38,6 +38,8 @@ export const print = (order) => {
 	  
 	for(let i=0;i<order.length;i++) {
 
+		let valueOrder = (Number(order[i].value) + Number(order[i].valueShipping)).toFixed(2)
+
 		printer
 			.font("a")
 			.align("ct")
@@ -52,14 +54,14 @@ export const print = (order) => {
 			.text(`CLIENTE: ${order[i].name}`)
 			.text(`Nº DO PEDIDO: ${order[i].num}`)
 			.text(`DATA: ${order[i].date}`)
-			.text(`FORMA DE PAGAMENTO: ${"falta"}`)
+			.text(`FORMA DE PAGAMENTO: ${"PIX"}`)
 			.text(` `)
 			.text(`PEDIDO: ${order[i].itens.replace(regex, '')}`)
 			.text(`${order[i].itensComp.replace(regex, '')}`)
-			.text(`OBSERVACAO: ${order[i].obs.replace(regex, '')}`)
 			.text(`VALOR DO PEDIDO: R$ ${order[i].value}`)
 			.text(`TAXA DE ENTREGA: R$ ${order[i].valueShipping}`)
-			.text(`VALOR TOTAL: R$ ${order[i].value}`)
+			.text(`VALOR TOTAL: R$ ${valueOrder}`)
+			.text(`OBSERVACAO: ${order[i].obs}`)
 			.text(` `)
 			.text('-------------- ENTREGA --------------')
 			.text(`NOME DO CLIENTE: ${order[i].name}`)

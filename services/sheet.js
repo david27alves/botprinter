@@ -38,7 +38,7 @@ export const getOrders = async () => {
             "num": rows[i].get('N. pedido'),
             "itens": rows[i].get('Lista de Pedido'),
             "itensComp": rows[i].get('Lista de Pedido 1/2'),
-            "obs": rows[i].get('Lista de Pedido 1/2'),
+            "obs": rows[i].get('ObservacaoPedido'),
             "value": rows[i].get('Valor'),
             "valueShipping": rows[i].get('ValorFrete'),
             "distance": rows[i].get('DistanciaKM'),
