@@ -12,7 +12,7 @@ setInterval(async () => {
     orders = await getOrders()
     //console.log(orders)
     
-    if (orders.length < 1) {
+    if (orders.length >= 1) {
         print(orders)
     }
 
