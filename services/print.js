@@ -48,7 +48,7 @@ export const print = (order) => {
 			.font("a")
 			.align("ct")
 			.size(1, 1)
-			.text('--------------- PEDIDO ---------------')
+			.text('------------ PEDIDO CHATBOT -----------')
 		
 		printer
 			.font("b")
