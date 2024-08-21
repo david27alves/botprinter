@@ -43,6 +43,7 @@ export const print = (order) => {
 	for(let i=0;i<order.length;i++) {
 
 		let valueOrder = (Number(order[i].value) + Number(order[i].valueShipping)).toFixed(2)
+		console.log(`Imprimindo pedido ${order[i].num}`)
 
 		printer
 			.font("a")
