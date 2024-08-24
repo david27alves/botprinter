@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "electron .",
+    "build": "@electron-packager . BOTPrinter --platform=win32 --out=./build --overwrite && cd build && powershell Compress-Archive BOTPrinter-win32-x64 BOTPrinter.zip -Force"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +19,12 @@
     "escpos-usb": "^3.0.0-alpha.4",
     "google-auth-library": "^9.13.0",
     "google-spreadsheet": "^4.1.2",
-    "pdfkit": "^0.15.0"
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@electron/packager": "^18.3.4",
+    "electron": "^32.0.0"
   },
   "type": "module"
 }

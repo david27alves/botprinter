@@ -16,6 +16,16 @@ const serviceAccountAuth = new JWT({
     scopes: ['https://www.googleapis.com/auth/spreadsheets']
 })
 
+const deleteRow = async (row) => {
+    const doc = new GoogleSpreadsheet(config.sheet_id, serviceAccountAuth)
+    await doc.loadInfo()
+    const sheet = doc.sheetsByIndex[0]
+    const rows = await sheet.getRows()
+
+    await rows[i].delete()
+
+}
+
 export const getOrders = async () => {
 
     const doc = new GoogleSpreadsheet(config.sheet_id, serviceAccountAuth)
