@@ -19,7 +19,6 @@ ipcMain.on('segunda', (event, arg) => {
 })
 
 ipcMain.on('get-orders', async(event, arg) => {
-    
     const orders = await getOrders()
     
     if (orders.length >= 1) {
