@@ -27,7 +27,6 @@ ipcMain.on('get-orders', async(event, arg) => {
             numOrdersPrint.push(orders[i].num)
         }
         event.sender.send('return-txt-log', `Imprimindo pedido${numOrdersPrint.length>1 ? 's' : ''} ${numOrdersPrint}`)
-        //print(orders)
         printFromTemplate(orders)
     } else {
         event.sender.send('return-txt-log', 'Nenhum pedido para impressão!')

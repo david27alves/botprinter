@@ -41,12 +41,17 @@ const printFromTemplate = (orders) => {
 		let printer = new Printer(device, options)
 	
 		for(let i=0;i<orders.length;i++) {
+
 			printer
 				.font("a")
-				.align("ct")
+				.align("lt")
 				.size(1, 1)
-				.text(getOrderTemplate(orders[i]))
+				.text(await getOrderTemplate(orders[i]))
+				.cut()
 		}
+
+		printer.close()
+		
 	})
 
 }
