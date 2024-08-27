@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import { app, dialog, ipcMain, Menu } from 'electron'
-import { print }  from './services/print.js'
+import { print, printFromTemplate }  from './services/print.js'
 import { getOrders } from './services/sheet.js'
 import { createWindow } from './window.js'
 
@@ -27,7 +27,8 @@ ipcMain.on('get-orders', async(event, arg) => {
             numOrdersPrint.push(orders[i].num)
         }
         event.sender.send('return-txt-log', `Imprimindo pedido${numOrdersPrint.length>1 ? 's' : ''} ${numOrdersPrint}`)
-        print(orders)
+        //print(orders)
+        printFromTemplate(orders)
     } else {
         event.sender.send('return-txt-log', 'Nenhum pedido para impressão!')
     }

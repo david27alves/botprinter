@@ -1,23 +1,22 @@
 ----------- PEDIDO CHATBOT ------------
-CLIENTE: {{order_client_name}}
-Nº DO PEDIDO: {{order_num}}
-DATA: {{order_date}}
-FORMA DE PAGAMENTO: PIX
-\n
-PEDIDO: {{order_itens}}
-{{order_itens_comp}}
-VALOR DO PEDIDO: R$ {{order_value}}
-TAXA DE ENTREGA: R$ {{order_value_shipping}}
-VALOR TOTAL: R$ {{order_value_total}}
-OBSERVACAO: {{order_obs}}
-\n
+CLIENTE: {{pedido_cliente_nome}}
+Nº DO PEDIDO: {{pedido_numero}}
+DATA: {{pedido_data}}
+FORMA DE PAGAMENTO: {{pedido_pagamento}}
+
+PEDIDO: {{pedido_itens}}
+{{{pedido_itens_complemento}}}
+VALOR DO PEDIDO: R$ {{pedido_valor}}
+TAXA DE ENTREGA: R$ {{pedido_valor_entrega}}
+VALOR TOTAL: R$ {{pedido_valor_total}}
+OBSERVACAO: {{pedido_observação}}
+
 -------------- ENTREGA --------------
-NOME DO CLIENTE: {{order_client_name}}
-ENDERECO: {{order_client_address}}
-COMPLEMENTO: {{order_addressComp}}
-PONTO DE REFERENCIA: ${order[i].addressRef}`)
-BAIRRO: ${order[i].addressNeigh}`)
-CIDADE: ${order[i].addressCity}`)
-DISTANCIA: ${order[i].distance}`)
--------------- FIM --------------')
-\n	
+NOME DO CLIENTE: {{pedido_cliente_nome}}
+ENDERECO: {{pedido_cliente_endereco}}
+COMPLEMENTO: {{pedido_endereco_complemento}}
+PONTO DE REFERENCIA: {{pedido_referencia}}
+BAIRRO: {{pedido_bairro}}
+CIDADE: {{pedido_cidade}}
+DISTANCIA: {{pedido_distancia}}
+-------------- FIM --------------

@@ -10,6 +10,7 @@ const createWindow = () => {
         width: 500,
         height: 600,
         maximizable: false,
+        resizable: false,
         //icon: "./static/icon.png",
         webPreferences: {
             nodeIntegration: true,
@@ -20,7 +21,7 @@ const createWindow = () => {
     
     //win.webContents.openDevTools()
     win.loadFile('./views/index.html')
-    win.setMenu(null)
+    //win.setMenu(null)
     
     if (!secondInstance) {
         const options = {
@@ -74,7 +75,6 @@ const openConfigPrintWindow = () => {
         //icon: "./static/icon.png"
     })
     
-    //printWindow.webContents.openDevTools()
     printWindow.loadFile('./views/configprint.html')
     printWindow.show()
     printWindow.removeMenu()
