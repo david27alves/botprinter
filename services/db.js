@@ -45,8 +45,6 @@ const insertTemplate = async (template) => {
 
 const getAllOrders = async() => {
     const orders = await Order.findAll()
-    //console.log(orders)
-    //return orders
 }
 
 const getAllTemplates = async() => {

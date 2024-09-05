@@ -21,7 +21,7 @@ const createWindow = () => {
     
     //win.webContents.openDevTools()
     win.loadFile('./views/index.html')
-    //win.setMenu(null)
+    win.setMenu(null)
     
     if (!secondInstance) {
         const options = {

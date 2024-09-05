@@ -32,25 +32,27 @@ const printFromTemplate = (orders) => {
 	const device = initPrint()
 	device.open(async (err) => {
 
-		if(err){
-			console.log(`Error: ${err}`)
-			return
-		}
+		// if(err){
+		// 	console.log(`Error: ${err}`)
+		// 	return
+		// }
 
 		const options = { encoding: "utf-8" /* default */ }
 		let printer = new Printer(device, options)
-	
+		
 		for(let i=0;i<orders.length;i++) {
 
-			printer
-				.font("a")
-				.align("lt")
-				.size(1, 1)
-				.text(await getOrderTemplate(orders[i]))
-				.cut()
+			// printer
+			// 	.font("a")
+			// 	.align("lt")
+			// 	.size(1, 1)
+			// 	.text(await getOrderTemplate(orders[i]))
+			// 	.cut()
+			const getOrd = await getOrderTemplate(orders[i]) 
+			console.log(`=> ${getOrd}`)
 		}
 
-		printer.close()
+		// printer.close()
 		
 	})
 

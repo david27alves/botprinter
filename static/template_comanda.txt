@@ -1,22 +1,22 @@
 ----------- PEDIDO CHATBOT ------------
-CLIENTE: {{pedido_cliente_nome}}
-Nº DO PEDIDO: {{pedido_numero}}
-DATA: {{pedido_data}}
-FORMA DE PAGAMENTO: {{pedido_pagamento}}
+CLIENTE: {{Nome}}
+Nº DO PEDIDO: {{Npedido}}
+DATA: {{Data}}
+FORMA DE PAGAMENTO: PIX
 
-PEDIDO: {{pedido_itens}}
-{{{pedido_itens_complemento}}}
-VALOR DO PEDIDO: R$ {{pedido_valor}}
-TAXA DE ENTREGA: R$ {{pedido_valor_entrega}}
-VALOR TOTAL: R$ {{pedido_valor_total}}
-OBSERVACAO: {{pedido_observação}}
+PEDIDO: {{ListadePedido}}
+{{{ListadePedido12}}}
+VALOR DO PEDIDO: R$ {{Valor}}
+TAXA DE ENTREGA: R$ {{ValorFrete}}
+VALOR TOTAL: R$ {{Total}}
+OBSERVACAO: {{ObservacaoPedido}}
 
 -------------- ENTREGA --------------
-NOME DO CLIENTE: {{pedido_cliente_nome}}
-ENDERECO: {{pedido_cliente_endereco}}
-COMPLEMENTO: {{pedido_endereco_complemento}}
-PONTO DE REFERENCIA: {{pedido_referencia}}
-BAIRRO: {{pedido_bairro}}
-CIDADE: {{pedido_cidade}}
-DISTANCIA: {{pedido_distancia}}
+NOME DO CLIENTE: {{Nome}}
+ENDERECO: {{Endereco}}
+COMPLEMENTO: {{Complemento}}
+PONTO DE REFERENCIA: {{PontoReferencia}}
+BAIRRO: {{Bairro}}
+CIDADE: {{Cidade}}
+DISTANCIA: {{DistanciaKM}}
 -------------- FIM --------------

@@ -3,34 +3,31 @@ import 'dotenv/config'
 import { JWT } from 'google-auth-library'
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 
-const config = {
-    "sheet_id": process.env.SHEET_ID,
-    "email": process.env.EMAIL,
-    "secret_key": process.env.SECRET_KEY,
-    "time": process.env.TIME
-}
+const initSheet = async () => {
 
-const serviceAccountAuth = new JWT({
-    email: config.email,
-    key: config.secret_key,
-    scopes: ['https://www.googleapis.com/auth/spreadsheets']
-})
+    const config = {
+        "sheet_id": process.env.SHEET_ID,
+        "email": process.env.EMAIL,
+        "secret_key": process.env.SECRET_KEY,
+        "time": process.env.TIME
+    }
 
-const deleteRow = async (row) => {
-    const doc = new GoogleSpreadsheet(config.sheet_id, serviceAccountAuth)
-    await doc.loadInfo()
-    const sheet = doc.sheetsByIndex[0]
-    const rows = await sheet.getRows()
-
-    await rows[i].delete()
-
-}
-
-export const getOrders = async () => {
+    const serviceAccountAuth = new JWT({
+        email: config.email,
+        key: config.secret_key,
+        scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    })
 
     const doc = new GoogleSpreadsheet(config.sheet_id, serviceAccountAuth)
     await doc.loadInfo()
     const sheet = doc.sheetsByIndex[0]
+
+    return sheet
+}
+
+const getOrders = async () => {
+
+    const sheet = await initSheet()
     const rows = await sheet.getRows()
 
     let orders = []
@@ -64,3 +61,45 @@ export const getOrders = async () => {
 
 }
 
+const getOrdersHeader = async() => {
+    const sheet = await initSheet()
+    const rows = await sheet.getRows()
+
+    const header = sheet.headerValues
+
+    let arr = []
+    arr.push(replaceHeader(header))
+    for (let i=0;i<rows.length;i++){
+        arr.push(rows[i]._rawData)
+        await rows[i].delete()
+    }
+
+    const arrAjusteds = adjustHeaders(arr)
+    return arrAjusteds
+}
+
+const replaceHeader = (header) =>{
+
+    let headerReplaced = []
+
+    for(let i=0; i<header.length;i++) {
+        headerReplaced.push(header[i].replace(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g, ''))
+    }
+
+    return headerReplaced
+}
+
+const adjustHeaders = (array) => {
+    const headers = array.shift()
+    const returnArray = []
+    array.forEach((value, index) => {
+      const returnObject = {}
+      value.forEach((column, index) => {
+        returnObject[headers[index]] = column
+      })
+      returnArray.push(returnObject)
+    })
+    return returnArray
+}
+
+export { getOrders, getOrdersHeader }

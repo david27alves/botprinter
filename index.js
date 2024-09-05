@@ -1,7 +1,7 @@
 import 'dotenv/config'
-import { app, dialog, ipcMain, Menu } from 'electron'
+import { app, ipcMain } from 'electron'
 import { print, printFromTemplate }  from './services/print.js'
-import { getOrders } from './services/sheet.js'
+import { getOrders, getOrdersHeader } from './services/sheet.js'
 import { createWindow } from './window.js'
 
 console.log('BOTPrinter run!')
@@ -19,14 +19,10 @@ ipcMain.on('segunda', (event, arg) => {
 })
 
 ipcMain.on('get-orders', async(event, arg) => {
-    const orders = await getOrders()
+    const orders = await getOrdersHeader()
     
     if (orders.length >= 1) {
-        let numOrdersPrint = []
-        for(let i=0; i<orders.length;i++) {
-            numOrdersPrint.push(orders[i].num)
-        }
-        event.sender.send('return-txt-log', `Imprimindo pedido${numOrdersPrint.length>1 ? 's' : ''} ${numOrdersPrint}`)
+        event.sender.send('return-txt-log', `Imprimindo pedidos!`)
         printFromTemplate(orders)
     } else {
         event.sender.send('return-txt-log', 'Nenhum pedido para impressão!')
