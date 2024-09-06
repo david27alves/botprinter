@@ -83,7 +83,7 @@ const replaceHeader = (header) =>{
     let headerReplaced = []
 
     for(let i=0; i<header.length;i++) {
-        headerReplaced.push(header[i].replace(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g, ''))
+        headerReplaced.push(header[i].replace(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|+=-]/g, ''))
     }
 
     return headerReplaced

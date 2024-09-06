@@ -3,6 +3,7 @@ CLIENTE: {{Nome}}
 Nº DO PEDIDO: {{Npedido}}
 DATA: {{Data}}
 FORMA DE PAGAMENTO: PIX
+{{Forma_retirada}}
 
 PEDIDO: {{ListadePedido}}
 {{{ListadePedido12}}}
